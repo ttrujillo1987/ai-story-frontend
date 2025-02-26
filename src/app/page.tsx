@@ -30,7 +30,7 @@ export default function Home() {
     setImageUrl("");
 
     try {
-      const response = await fetch("http://localhost:8000/generate-story", {
+      const response = await fetch("https://ai-story-backend.onrender.com/generate-story", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, character, topic }),
@@ -50,7 +50,7 @@ export default function Home() {
     if (!story) return;  // Prevent saving empty stories
   
     try {
-      const response = await fetch("http://localhost:8000/save-story", {
+      const response = await fetch("https://ai-story-backend.onrender.com/save-story", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, character, topic, story, image_url: imageUrl }),
@@ -124,7 +124,7 @@ export default function Home() {
   // Fetch past stories
   const fetchStories = async () => {
     try {
-      const response = await fetch("http://localhost:8000/stories");
+      const response = await fetch("https://ai-story-backend.onrender.com/stories");
       const data = await response.json();
       setPastStories(data);
       setShowPastStories(true);
@@ -142,7 +142,7 @@ export default function Home() {
   // Delete a story
   const deleteStory = async (storyId: number) => {
     try {
-      await fetch(`http://localhost:8000/delete-story/${storyId}`, { method: "DELETE" });
+      await fetch(`https://ai-story-backend.onrender.com/delete-story/${storyId}`, { method: "DELETE" });
       alert("Story deleted successfully!");
       fetchStories(); // Refresh stories list
     } catch (error) {
