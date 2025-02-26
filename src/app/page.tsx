@@ -152,7 +152,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">AI-Powered Children's Story Generator</h1>
+      <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">AI-Powered Children&apos;s Story Generator</h1>
       <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-md">
         <input
           placeholder="Child&apos;s Name"
