@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import "./globals.css";
@@ -72,12 +72,10 @@ export default function Home() {
       format: "a4",
     });
   
-    const pageWidth = 210; // A4 width in mm
     const pageHeight = 297; // A4 height in mm
     const marginLeft = 10;
     const marginTop = 20;
     const maxWidth = 180; // Text width
-    const lineHeight = 7; // Space between lines
   
     // Set the font and title
     pdf.setFont("times", "bold");
@@ -110,7 +108,7 @@ export default function Home() {
     pdf.setFontSize(12);
     const storyLines = pdf.splitTextToSize(story, maxWidth);
 
-    storyLines.forEach((line: string | string[], index: any) => {
+    storyLines.forEach((line: string | string[]) => {
       if (textY + 10 > pageHeight - 20) { // Check if text exceeds page height
         pdf.addPage(); // Add new page
         textY = marginTop; // Reset text position
@@ -157,7 +155,7 @@ export default function Home() {
       <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">AI-Powered Children's Story Generator</h1>
       <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-md">
         <input
-          placeholder="Child's Name"
+          placeholder="Child&apos;s Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="w-full mb-3 p-2 border rounded-lg text-gray-500 placeholder-gray-300"
